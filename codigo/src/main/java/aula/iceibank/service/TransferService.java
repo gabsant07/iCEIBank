@@ -16,8 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.web.client.RestClient;
-import org.springframework.web.client.RestClientException;
 
 import java.util.UUID;
 
@@ -29,16 +27,16 @@ public class TransferService {
     private final AccountService accountService;
     private final RemoteDebitService remoteDebitService;
     private final AgencyRoutingService routingService;
-    private final LamportClockService clock;
+    private final VectorClockService clock;
     private final EventLogService eventLogService;
     private final BankProperties properties;
-    private final RestClient restClient;
+    private final MessagingService messaging;
     private final TransactionTemplate transactionTemplate;
 
     public TransferService(AccountRepository accountRepository, BankTransactionRepository transactionRepository,
                            AccountService accountService, RemoteDebitService remoteDebitService,
-                           AgencyRoutingService routingService, LamportClockService clock,
-                           EventLogService eventLogService, BankProperties properties, RestClient restClient,
+                           AgencyRoutingService routingService, VectorClockService clock,
+                           EventLogService eventLogService, BankProperties properties, MessagingService messaging,
                            TransactionTemplate transactionTemplate) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
@@ -48,7 +46,7 @@ public class TransferService {
         this.clock = clock;
         this.eventLogService = eventLogService;
         this.properties = properties;
-        this.restClient = restClient;
+        this.messaging = messaging;
         this.transactionTemplate = transactionTemplate;
     }
 
@@ -72,7 +70,7 @@ public class TransferService {
             destination.credit(request.amount());
             accountRepository.save(source);
             accountRepository.save(destination);
-            long timestamp = clock.localEvent();
+            long[] timestamp = clock.localEvent();
             BankTransaction transaction = transactionRepository.save(new BankTransaction(TransactionType.LOCAL_TRANSFER,
                     source.getAccountNumber(), destination.getAccountNumber(), request.amount(), TransactionStatus.COMPLETED,
                     properties.getAgencyId(), timestamp, "Local transfer completed"));
@@ -85,49 +83,52 @@ public class TransferService {
     public TransactionResponse remoteTransfer(TransferRequest request, int destinationAgency) {
         remoteDebitService.debitCommitted(request.sourceAccount(), request.amount());
         UUID transactionId = UUID.randomUUID();
-        long sendTimestamp = clock.sendEvent();
-        RemoteCreditRequest credit = new RemoteCreditRequest(transactionId, request.sourceAccount(),
+        long[] sendTimestamp = clock.sendEvent();
+        aula.iceibank.dto.CreditEvent credit = new aula.iceibank.dto.CreditEvent(transactionId, request.sourceAccount(),
                 request.destinationAccount(), request.amount(), properties.getAgencyId(), sendTimestamp);
         try {
-            restClient.post()
-                    .uri(properties.agencyUrl(destinationAgency) + "/api/transfers/internal/credit")
-                    .header("X-Agency-Key", properties.getInternalApiKey())
-                    .body(credit)
-                    .retrieve()
-                    .body(MessageResponse.class);
+            messaging.publish(destinationAgency, credit);
             BankTransaction transaction = transactionRepository.save(new BankTransaction(transactionId,
                     TransactionType.REMOTE_TRANSFER_SENT, request.sourceAccount(), request.destinationAccount(),
-                    request.amount(), TransactionStatus.COMPLETED, properties.getAgencyId(), sendTimestamp,
-                    "Remote transfer completed"));
+                    request.amount(), TransactionStatus.PUBLISHED, properties.getAgencyId(), sendTimestamp,
+                    "Published to RabbitMQ; destination credit is asynchronous"));
             eventLogService.register(TransactionType.REMOTE_TRANSFER_SENT.name(), sendTimestamp,
-                    "Remote transfer sent to agency " + destinationAgency);
+                    "Published transfer " + transactionId + " to agency " + destinationAgency);
             return TransactionResponse.from(transaction);
-        } catch (RestClientException exception) {
+        } catch (RuntimeException exception) {
             BankTransaction transaction = transactionRepository.save(new BankTransaction(transactionId,
                     TransactionType.REMOTE_TRANSFER_FAILED, request.sourceAccount(), request.destinationAccount(),
                     request.amount(), TransactionStatus.INCONSISTENT, properties.getAgencyId(), sendTimestamp,
-                    "Debit committed, but destination agency did not confirm the credit"));
+                    "Debit committed; broker publication unconfirmed; delivery uncertain"));
             eventLogService.register(TransactionType.REMOTE_TRANSFER_FAILED.name(), sendTimestamp,
-                    "Inconsistency: debit committed and agency " + destinationAgency + " unavailable");
+                    "Transfer " + transactionId + ": debit committed; broker confirmation missing");
             throw new BusinessException(HttpStatus.BAD_GATEWAY,
-                    "Destination agency unavailable. Debit was not automatically reverted. Transaction: "
+                    "Broker publication unconfirmed. Debit was not automatically reverted; delivery may have occurred. Transaction: "
                             + transaction.getId());
         }
     }
 
     @Transactional
     public MessageResponse receiveRemoteCredit(RemoteCreditRequest request) {
+        throw new BusinessException(HttpStatus.GONE, "Use RabbitMQ for inter-agency credits");
+    }
+    @Transactional
+    public MessageResponse receiveCreditEvent(aula.iceibank.dto.CreditEvent request) {
+        VectorClockService.validate(request.timestampVetorial());
+        if (request.transactionId() == null || request.sourceAccount() == null || request.destinationAccount() == null
+                || request.amount() == null || request.amount().compareTo(new java.math.BigDecimal("0.01")) < 0)
+            throw new IllegalArgumentException("Invalid credit payload");
         routingService.requireLocal(request.destinationAccount());
         if (request.sourceAgency() < 0 || request.sourceAgency() > 2
                 || routingService.ownerOf(request.sourceAccount()) != request.sourceAgency()
-                || request.lamportTimestamp() < 0) {
+                || request.timestampVetorial()[request.sourceAgency()] == 0) {
             throw new BusinessException(HttpStatus.BAD_REQUEST, "Invalid inter-agency transfer data");
         }
         if (transactionRepository.existsById(request.transactionId())) {
             return new MessageResponse("Credit already processed");
         }
+        long[] timestamp = clock.receiveEvent(request.timestampVetorial());
         Account destination = accountService.getLocal(request.destinationAccount());
-        long timestamp = clock.receiveEvent(request.lamportTimestamp());
         destination.credit(request.amount());
         accountRepository.save(destination);
         transactionRepository.save(new BankTransaction(request.transactionId(),

@@ -17,13 +17,14 @@ public record TransactionResponse(
         TransactionStatus status,
         Integer agencyId,
         long lamportTimestamp,
+        long[] timestampVetorial,
         Instant createdAt,
         String message
 ) {
     public static TransactionResponse from(BankTransaction transaction) {
         return new TransactionResponse(transaction.getId(), transaction.getType(), transaction.getSourceAccount(),
                 transaction.getDestinationAccount(), transaction.getAmount(), transaction.getStatus(),
-                transaction.getAgencyId(), transaction.getLamportTimestamp(), transaction.getCreatedAt(),
+                transaction.getAgencyId(), transaction.getLamportTimestamp(), transaction.getTimestampVetorial(), transaction.getCreatedAt(),
                 transaction.getMessage());
     }
 }

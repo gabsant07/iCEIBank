@@ -1,0 +1,48 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2026-09-29T16:51:55.888-03:00  INFO 35988 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Starting IceiBankApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 35988 (C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\iceibank-0.0.1-SNAPSHOT.jar started by KABUM in C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo)
+2026-09-29T16:51:55.890-03:00  INFO 35988 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-29T16:51:56.351-03:00  INFO 35988 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-29T16:51:56.395-03:00  INFO 35988 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 5 JPA repository interfaces.
+2026-09-29T16:51:56.880-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 18080 (http)
+2026-09-29T16:51:56.895-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-29T16:51:56.895-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-09-29T16:51:56.924-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-29T16:51:56.925-03:00  INFO 35988 --- [iceibank-agency-0] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1005 ms
+2026-09-29T16:51:57.033-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-29T16:51:57.080-03:00  INFO 35988 --- [iceibank-agency-0] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-09-29T16:51:57.100-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-29T16:51:57.325-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-29T16:51:57.347-03:00  INFO 35988 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-29T16:51:57.477-03:00  INFO 35988 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./target/sprint2-ui user=SA
+2026-09-29T16:51:57.479-03:00  INFO 35988 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-29T16:51:57.515-03:00  INFO 35988 --- [iceibank-agency-0] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-29T16:51:57.956-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-29T16:51:58.009-03:00  INFO 35988 --- [iceibank-agency-0] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-29T16:51:58.329-03:00  INFO 35988 --- [iceibank-agency-0] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name databaseUserDetailsService
+2026-09-29T16:51:58.591-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-29T16:51:58.750-03:00  WARN 35988 --- [iceibank-agency-0] [           main] o.s.r.backoff.ExponentialBackOffPolicy   : Multiplier must be > 1.0 for effective exponential backoff, but was 1.0
+2026-09-29T16:51:58.767-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./target/sprint2-ui'
+2026-09-29T16:51:58.845-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 18080 (http) with context path '/'
+2026-09-29T16:51:58.848-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5673
+2026-09-29T16:51:58.872-03:00  INFO 35988 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#594965c9:0/SimpleConnection@77217c17 [delegate=amqp://guest@127.0.0.1:5673/, localPort=53207]
+2026-09-29T16:51:58.948-03:00  INFO 35988 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Started IceiBankApplication in 3.308 seconds (process running for 3.578)
+2026-09-29T16:52:15.815-03:00  INFO 35988 --- [iceibank-agency-0] [io-18080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-29T16:52:15.815-03:00  INFO 35988 --- [iceibank-agency-0] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-29T16:52:15.816-03:00  INFO 35988 --- [iceibank-agency-0] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-29T16:54:16.296-03:00  INFO 35988 --- [iceibank-agency-0] [io-18080-exec-8] aula.iceibank.service.EventLogService    : [Vetor [1, 0, 0]] DEPOSIT Deposit completed, account=3

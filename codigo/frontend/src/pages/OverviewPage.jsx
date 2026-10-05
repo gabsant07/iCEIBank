@@ -36,7 +36,7 @@ export default function OverviewPage({ api, session, onNavigate }) {
       {error && <div className="form-error">{error}</div>}
       <div className="stats-grid">
         <article className="stat-card featured"><small>Saldo total da agência</small><strong>{money.format(total)}</strong><span>{accounts.length} contas cadastradas</span></article>
-        <article className="stat-card"><small>Relógio lógico</small><strong>{status?.lamportClock ?? "—"}</strong><span>Timestamp de Lamport atual</span></article>
+        <article className="stat-card"><small>Relógio lógico</small><strong>{status?.timestampVetorial ? `[${status.timestampVetorial.join(", ")}]` : "—"}</strong><span>Relógio vetorial atual</span></article>
         <article className="stat-card"><small>Agência atual</small><strong>0{session.id}</strong><span>{session.name}</span></article>
       </div>
       <section className="card">

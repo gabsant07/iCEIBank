@@ -26,8 +26,9 @@ public class EventLogService {
         this.objectMapper = objectMapper;
     }
 
-    public synchronized EventLog register(String type, long timestamp, String details) {
+    public synchronized EventLog register(String type, long[] timestamp, String details) {
         EventLog event = repository.save(new EventLog(properties.getAgencyId(), type, timestamp, details));
+        org.slf4j.LoggerFactory.getLogger(EventLogService.class).info("[Vetor {}] {} {}", timestamp, type, details);
         appendJsonLine(event);
         return event;
     }

@@ -1,0 +1,8 @@
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.552 s -- in aula.iceibank.controller.AccountControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.060 s -- in aula.iceibank.controller.AuthControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in aula.iceibank.controller.InternalTransferSecurityTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.154 s -- in aula.iceibank.controller.JwtSecurityTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in aula.iceibank.service.AgencyRoutingServiceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in aula.iceibank.service.LamportClockServiceTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.139 s -- in aula.iceibank.service.MessagingTransferTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in aula.iceibank.service.VectorClockServiceTest

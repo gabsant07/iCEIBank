@@ -27,6 +27,10 @@ public class BankTransaction {
     private TransactionStatus status;
     private Integer agencyId;
     private long lamportTimestamp;
+    @jakarta.persistence.Convert(converter = VectorConverter.class)
+    private long[] timestampVetorial;
+
+    public long[] getTimestampVetorial() { return timestampVetorial == null ? null : timestampVetorial.clone(); }
     private Instant createdAt;
     private String message;
 
@@ -53,6 +57,14 @@ public class BankTransaction {
         this.lamportTimestamp = lamportTimestamp;
         this.createdAt = Instant.now();
         this.message = message;
+    }
+
+    public BankTransaction(TransactionType type, Long source, Long destination, BigDecimal amount, TransactionStatus status, Integer agency, long[] vector, String message) {
+        this(UUID.randomUUID(), type, source, destination, amount, status, agency, vector, message);
+    }
+    public BankTransaction(UUID id, TransactionType type, Long source, Long destination, BigDecimal amount, TransactionStatus status, Integer agency, long[] vector, String message) {
+        this(id, type, source, destination, amount, status, agency, aula.iceibank.service.VectorClockService.rank(vector), message);
+        this.timestampVetorial = vector.clone();
     }
 
     public UUID getId() {

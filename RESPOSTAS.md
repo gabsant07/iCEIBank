@@ -164,3 +164,33 @@ A View é formada pelos arquivos de `frontend/src/pages` e `frontend/src/compone
 O papel de Controller é dividido entre `App.jsx`, `AuthContext` e as páginas. Eles recebem as ações da interface, chamam os serviços e atualizam o estado. Em um React pequeno, essa divisão é comum, embora não seja um MVC clássico.
 
 No backend, a separação é mais direta: controllers recebem as requisições REST, services guardam as regras de negócio, repositories acessam o H2 e entities representam os dados persistidos.
+
+---
+
+## Sprint 2 — Parte B, seção 6.4
+
+1. Dez agências exigiriam dez componentes em cada vetor, em vez de três. Espaço na mensagem e custo de atualização/comparação crescem O(p), com p processos. Dez é pequeno, mas milhares de participantes tornam o custo relevante e exigem estudar representação esparsa, escopo de participantes ou outros mecanismos. A implementação atual valida três componentes e precisaria ser parametrizada para essa evolução.
+2. [3,1,0] aconteceu antes de [3,2,0]: 3<=3, 1<2, 0<=0. Há desigualdade estrita em pelo menos uma posição.
+3. [3,1,0] e [1,3,0] são concorrentes: o primeiro tem componente 0 maior, o segundo tem componente 1 maior. Nenhum vetor domina o outro.
+
+## Sprint 2 — Parte C, seção 7.5
+
+1. No teste integrado de 29/09/2026, uma conta 100 foi criada na Agência 1 com saldo 100. Após derrubar o processo, a origem publicou 30 com status PUBLISHED. Ao reiniciar com o mesmo H2, a Agência 1 consumiu a mensagem e o saldo passou a 130. O log registrou REMOTE_TRANSFER_RECEIVED com vetor que incorpora o envio da origem e incrementa a componente do destino. Aqui a conta sobrevive porque já existe persistência em disco, diferente do exemplo em memória do roteiro. Um segundo teste enviou 5 para a conta 1000, inexistente: o broker entregou a mensagem, o consumidor registrou CREDIT_REJECTED/Account not found e a mensagem foi para fila-agencia-1.dlq. Portanto, entrega não implica aplicação do crédito. O teste revelou também a necessidade de WRITE_DELAY=0 no H2 para preservar commits recentes após encerramento abrupto.
+2. Na Sprint 1 o destino precisava estar disponível durante a chamada REST. Agora a origem pode publicar enquanto o destino está desligado, e a fila retém o crédito. Ainda não há atomicidade entre banco de origem, broker e banco de destino. Uma falha de publicação após débito, uma confirmação perdida ou uma conta ausente exigem reconciliação; DLQ não estorna dinheiro nem implementa Saga. O status PUBLISHED confirma o broker, não o crédito.
+3. O consumidor não precisa do JWT de um usuário porque é um canal interno de mensagens. Porém isso não torna o canal automaticamente seguro: qualquer cliente com credenciais e permissão de publicar pode injetar créditos. O código valida partição, origem, valor, vetor e UUID, mas não prova criptograficamente qual agência produziu o evento. Em desenvolvimento há credenciais locais guest; em produção seriam necessários usuários e permissões restritos por agência/vhost, TLS (amqps), segredos externos e, conforme o modelo de ameaça, assinatura das mensagens. Não basta confiar em sourceAgency recebido no JSON.
+
+## Sprint 2 — Parte D, seção 8.3
+
+1. O vetor conserva a informação de progresso conhecida de cada processo. A atualização por máximo na recepção propaga as dependências. Comparar todas as componentes permite provar a ordem causal ou a incomparabilidade; apenas comparar dois números de Lamport não permite essa conclusão.
+2. Nos logs reais, E0 é DEPOSIT na Agência 0 com [1,0,0], e E2 é DEPOSIT na Agência 2 com [0,0,1]. O script classificou E0/E2 como CONCORRENTES. São depósitos independentes sem mensagens entre as agências. Concorrência causal não exige simultaneidade de relógio físico. Já o envio REMOTE_TRANSFER_SENT precede o crédito REMOTE_TRANSFER_RECEIVED correspondente: o vetor do envio é menor ou igual componente a componente, e o script imprime ANTES para esse par. Consulte evidencias/sprint2/linha-do-tempo-causal.txt.
+3. Comparar todos os pares custa O(n²*p), considerando também p componentes. Milhões de eventos tornam o custo e a própria saída enormes. Pode-se limitar janelas temporais e pares relevantes, indexar por agência/transação, manter um grafo de dependências, processar incrementos em streaming ou selecionar apenas eventos necessários para uma investigação. Uma ordenação visual simples não substitui a comparação causal.
+
+## Sprint 2 — Funcionalidade adicional: dead-letter queues
+
+MessagingConfig configura iceibank.rejeitados e fila-agencia-<id>.dlq. Créditos inválidos, por exemplo para conta inexistente, são rejeitados com AmqpRejectAndDontRequeueException. A configuração de retry limita a três tentativas; erros transitórios que esgotam tentativas também são rejeitados. O ACK de um crédito válido só acontece após o retorno do serviço transacional. O teste integrado consultou a API real do RabbitMQ e encontrou mensagens prontas em fila-agencia-1.dlq. Não há reprocessamento automático nem estorno: a DLQ preserva o payload para investigação.
+
+## Sprint 2 — Validação e uso de IA
+
+Foram executados testes Java (JWT, contas, partição, transferência local, relógio vetorial, publicação com mensageria simulada, crédito idempotente e falhas), testes Node da comparação causal, build React e validação com três processos Java e RabbitMQ real. Transcript e logs estão em evidencias/sprint2/. Login e depósito também foram executados pelo React no navegador, com saldo final de 1510 e captura frontend-regressao.png. Os prints acadêmicos com Get-Date em terminal e o histórico incremental de commits continuam itens próprios de entrega; não foram fabricados.
+
+Foi utilizado Codex/OpenAI para analisar o roteiro, adaptar e implementar código, escrever testes e documentação e executar validações. Esta declaração identifica o apoio utilizado; o aluno deve revisar, compreender e ser capaz de explicar cada trecho antes da entrega.

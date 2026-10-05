@@ -23,12 +23,12 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final BankTransactionRepository transactionRepository;
     private final AgencyRoutingService routingService;
-    private final LamportClockService clock;
+    private final VectorClockService clock;
     private final EventLogService eventLogService;
     private final BankProperties properties;
 
     public AccountService(AccountRepository accountRepository, BankTransactionRepository transactionRepository,
-                          AgencyRoutingService routingService, LamportClockService clock,
+                          AgencyRoutingService routingService, VectorClockService clock,
                           EventLogService eventLogService, BankProperties properties) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
@@ -55,7 +55,7 @@ public class AccountService {
     public AccountResponse find(long accountNumber) {
         routingService.requireLocal(accountNumber);
         Account account = getLocal(accountNumber);
-        long timestamp = clock.localEvent();
+        long[] timestamp = clock.localEvent();
         eventLogService.register(TransactionType.BALANCE_CHECKED.name(), timestamp,
                 "Balance checked for account " + accountNumber);
         return AccountResponse.from(account);
@@ -106,7 +106,7 @@ public class AccountService {
     }
 
     private void record(TransactionType type, Long source, Long destination, BigDecimal amount, String message) {
-        long timestamp = clock.localEvent();
+        long[] timestamp = clock.localEvent();
         transactionRepository.save(new BankTransaction(type, source, destination, amount, TransactionStatus.COMPLETED,
                 properties.getAgencyId(), timestamp, message));
         eventLogService.register(type.name(), timestamp, message + ", account=" + source);

@@ -1,0 +1,185 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2026-09-29T16:55:43.284-03:00  INFO 9460 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Starting IceiBankApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 9460 (C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\iceibank-0.0.1-SNAPSHOT.jar started by KABUM in C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo)
+2026-09-29T16:55:43.285-03:00  INFO 9460 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-29T16:55:43.719-03:00  INFO 9460 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-29T16:55:43.752-03:00  INFO 9460 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 5 JPA repository interfaces.
+2026-09-29T16:55:44.142-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 18081 (http)
+2026-09-29T16:55:44.154-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-29T16:55:44.154-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-09-29T16:55:44.186-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-29T16:55:44.186-03:00  INFO 9460 --- [iceibank-agency-0] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 876 ms
+2026-09-29T16:55:44.291-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-29T16:55:44.331-03:00  INFO 9460 --- [iceibank-agency-0] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-09-29T16:55:44.350-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-29T16:55:44.529-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-29T16:55:44.549-03:00  INFO 9460 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-29T16:55:44.688-03:00  INFO 9460 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\sprint2-20260929-165530/bank-1 user=SA
+2026-09-29T16:55:44.690-03:00  INFO 9460 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-29T16:55:44.722-03:00  INFO 9460 --- [iceibank-agency-0] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-29T16:55:45.143-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-29T16:55:45.187-03:00  INFO 9460 --- [iceibank-agency-0] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-29T16:55:45.548-03:00  INFO 9460 --- [iceibank-agency-0] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name databaseUserDetailsService
+2026-09-29T16:55:45.855-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-29T16:55:46.037-03:00  WARN 9460 --- [iceibank-agency-0] [           main] o.s.r.backoff.ExponentialBackOffPolicy   : Multiplier must be > 1.0 for effective exponential backoff, but was 1.0
+2026-09-29T16:55:46.052-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\sprint2-20260929-165530/bank-1'
+2026-09-29T16:55:46.126-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 18081 (http) with context path '/'
+2026-09-29T16:55:46.130-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5673
+2026-09-29T16:55:46.154-03:00  INFO 9460 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6db2a260:0/SimpleConnection@74cd82f1 [delegate=amqp://guest@127.0.0.1:5673/, localPort=51406]
+2026-09-29T16:55:46.238-03:00  INFO 9460 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Started IceiBankApplication in 3.196 seconds (process running for 3.479)
+2026-09-29T16:55:46.308-03:00  INFO 9460 --- [iceibank-agency-0] [io-18081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-29T16:55:46.308-03:00  INFO 9460 --- [iceibank-agency-0] [io-18081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-29T16:55:46.309-03:00  INFO 9460 --- [iceibank-agency-0] [io-18081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-29T16:55:46.485-03:00  INFO 9460 --- [iceibank-agency-0] [ntContainer#0-1] aula.iceibank.service.EventLogService    : [Vetor [5, 5, 0]] REMOTE_TRANSFER_RECEIVED Remote credit from agency 0 for account 100
+2026-09-29T16:55:46.579-03:00  INFO 9460 --- [iceibank-agency-0] [io-18081-exec-5] aula.iceibank.service.EventLogService    : [Vetor [5, 6, 0]] BALANCE_CHECKED Balance checked for account 100
+2026-09-29T16:55:46.614-03:00  INFO 9460 --- [iceibank-agency-0] [ntContainer#0-1] aula.iceibank.service.EventLogService    : [Vetor [7, 8, 0]] CREDIT_REJECTED Account not found
+2026-09-29T16:55:47.133-03:00  INFO 9460 --- [iceibank-agency-0] [ntContainer#0-1] aula.iceibank.service.EventLogService    : [Vetor [7, 10, 0]] CREDIT_REJECTED Account not found
+2026-09-29T16:55:47.642-03:00  INFO 9460 --- [iceibank-agency-0] [ntContainer#0-1] aula.iceibank.service.EventLogService    : [Vetor [7, 12, 0]] CREDIT_REJECTED Account not found
+2026-09-29T16:55:47.646-03:00  WARN 9460 --- [iceibank-agency-0] [ntContainer#0-1] o.s.a.r.r.RejectAndDontRequeueRecoverer  : Retries exhausted for message (Body:'[B@4b47ac4a(byte[156])' MessageProperties [headers={spring_listener_return_correlation=10308efa-0a8b-48c6-abf0-296bb9bba2aa, spring_returned_message_correlation=0828a5b7-03d1-4f1b-a62d-fc2422d29eb7}, messageId=0828a5b7-03d1-4f1b-a62d-fc2422d29eb7, contentType=application/json, contentLength=0, receivedDeliveryMode=PERSISTENT, priority=0, redelivered=false, receivedExchange=iceibank.eventos, receivedRoutingKey=agencia.1.creditar, deliveryTag=2, consumerTag=amq.ctag-7LLpRz_sxkc_sn_HO4OGHg, consumerQueue=fila-agencia-1])
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void aula.iceibank.service.CreditConsumer.receive(org.springframework.amqp.core.Message) throws java.io.IOException' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:283) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:221) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:148) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1694) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1616) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:114) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:246) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:135) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.$Proxy148.invokeListener(Unknown Source) ~[na:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1604) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1595) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListenerAndHandleException(AbstractMessageListenerContainer.java:1540) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1521) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:1091) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:1027) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1431) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1331) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+Caused by: org.springframework.amqp.AmqpRejectAndDontRequeueException: Invalid credit sent to DLQ
+	at aula.iceibank.service.CreditConsumer.receive(CreditConsumer.java:26) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.adapter.KotlinAwareInvocableHandlerMethod.doInvoke(KotlinAwareInvocableHandlerMethod.java:45) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:80) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:274) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	... 25 common frames omitted
+Caused by: aula.iceibank.exception.BusinessException: Account not found
+	at aula.iceibank.service.AccountService.lambda$getLocal$0(AccountService.java:99) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at aula.iceibank.service.AccountService.getLocal(AccountService.java:99) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at aula.iceibank.service.AccountService$$SpringCGLIB$$0.getLocal(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at aula.iceibank.service.TransferService.receiveCreditEvent(TransferService.java:131) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.12.jar!/:6.2.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at aula.iceibank.service.TransferService$$SpringCGLIB$$0.receiveCreditEvent(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at aula.iceibank.service.CreditConsumer.receive(CreditConsumer.java:23) ~[!/:0.0.1-SNAPSHOT]
+	... 32 common frames omitted
+
+2026-09-29T16:55:47.648-03:00  WARN 9460 --- [iceibank-agency-0] [ntContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Retry Policy Exhausted
+	at org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer.recover(RejectAndDontRequeueRecoverer.java:76) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.config.StatelessRetryOperationsInterceptorFactoryBean.recover(StatelessRetryOperationsInterceptorFactoryBean.java:78) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$ItemRecovererCallback.recover(RetryOperationsInterceptor.java:150) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:246) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor.invoke(RetryOperationsInterceptor.java:135) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.$Proxy148.invokeListener(Unknown Source) ~[na:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1604) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1595) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListenerAndHandleException(AbstractMessageListenerContainer.java:1540) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1521) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:1091) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:1027) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1431) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1331) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+Caused by: org.springframework.amqp.AmqpRejectAndDontRequeueException: null
+	... 19 common frames omitted
+Caused by: org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void aula.iceibank.service.CreditConsumer.receive(org.springframework.amqp.core.Message) throws java.io.IOException' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:283) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:221) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:148) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1694) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1616) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.retry.interceptor.RetryOperationsInterceptor$1.doWithRetry(RetryOperationsInterceptor.java:114) ~[spring-retry-2.0.12.jar!/:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.12.jar!/:na]
+	... 14 common frames omitted
+Caused by: org.springframework.amqp.AmqpRejectAndDontRequeueException: Invalid credit sent to DLQ
+	at aula.iceibank.service.CreditConsumer.receive(CreditConsumer.java:26) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.adapter.KotlinAwareInvocableHandlerMethod.doInvoke(KotlinAwareInvocableHandlerMethod.java:45) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-6.2.12.jar!/:6.2.12]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:80) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:274) ~[spring-rabbit-3.2.8.jar!/:3.2.8]
+	... 25 common frames omitted
+Caused by: aula.iceibank.exception.BusinessException: Account not found
+	at aula.iceibank.service.AccountService.lambda$getLocal$0(AccountService.java:99) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
+	at aula.iceibank.service.AccountService.getLocal(AccountService.java:99) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at aula.iceibank.service.AccountService$$SpringCGLIB$$0.getLocal(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at aula.iceibank.service.TransferService.receiveCreditEvent(TransferService.java:131) ~[!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.12.jar!/:6.2.12]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.12.jar!/:6.2.12]
+	at aula.iceibank.service.TransferService$$SpringCGLIB$$0.receiveCreditEvent(<generated>) ~[!/:0.0.1-SNAPSHOT]
+	at aula.iceibank.service.CreditConsumer.receive(CreditConsumer.java:23) ~[!/:0.0.1-SNAPSHOT]
+	... 32 common frames omitted
+

@@ -1,4 +1,5 @@
 $project = Split-Path -Parent $PSScriptRoot
+if (-not $env:RABBITMQ_URL) { throw "Defina RABBITMQ_URL com a URL AMQP do broker antes de iniciar." }
 $jar = Join-Path $project "target\iceibank-0.0.1-SNAPSHOT.jar"
 $runtime = Join-Path $project ".runtime"
 
@@ -14,7 +15,7 @@ New-Item -ItemType Directory -Force -Path $runtime | Out-Null
 0..2 | ForEach-Object {
     $agency = $_
     $port = 8080 + $agency
-    $process = Start-Process powershell -PassThru -ArgumentList "-NoExit", "-File", (Join-Path $PSScriptRoot "run-agency.ps1"), "-AgencyId", $agency, "-Port", $port
+    $process = Start-Process powershell -WindowStyle Hidden -PassThru -ArgumentList "-NoExit", "-File", (Join-Path $PSScriptRoot "run-agency.ps1"), "-AgencyId", $agency, "-Port", $port
     Set-Content -Path (Join-Path $runtime "agency-$agency.pid") -Value $process.Id
 }
 

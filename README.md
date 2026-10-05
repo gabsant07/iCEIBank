@@ -1,22 +1,22 @@
 # ICEIBank
 
-Projeto da Sprint 1 de Sistemas Distribuídos. Uma API REST + Relógio lógico de Lamport + Frontend + Auth JWT
+Projeto de Sistemas Distribuídos — Sprints 1 e 2. API REST, RabbitMQ, relógio vetorial, frontend React e autenticação JWT.
 
 ## Tecnologias
 
 - Java 21
 - Spring Boot 3.5
 - Maven
-- Spring Web, Data JPA e Security
+- Spring Web, Data JPA, Security e AMQP
 - H2
 - JWT
 - React 19 e Vite 8 no frontend separado
 
-As instruções completas de execução e teste estão em `docs/EXECUCAO.md`, e o mapeamento da entrega está em `docs/CHECKLIST-SPRINT1.md`. O frontend separado está em `frontend/`.
+A análise e as instruções da Sprint 2 estão em [docs/SPRINT2.md](docs/SPRINT2.md). A documentação histórica da Sprint 1 está em `docs/EXECUCAO.md` e `docs/CHECKLIST-SPRINT1.md`. O frontend separado está em `codigo/frontend/`.
 
 ## Arquitetura
 
-Não existe servidor bancário central. O mesmo JAR roda nas portas 8080, 8081 e 8082, com um H2 próprio em cada processo. A agência dona da conta é calculada com `floorMod(accountNumber, 3)`. Transferências remotas são chamadas diretamente da agência de origem para a agência de destino.
+Não existe servidor bancário central. O mesmo JAR roda nas portas 8080, 8081 e 8082, com um H2 próprio em cada processo. A agência dona da conta é calculada com `floorMod(accountNumber, 3)`. Transferências remotas são publicadas na exchange topic iceibank.eventos e consumidas de forma assíncrona pelo destino. Configure RABBITMQ_URL antes de iniciar.
 
 ## Principais rotas
 
@@ -29,16 +29,16 @@ Não existe servidor bancário central. O mesmo JAR roda nas portas 8080, 8081 e
 | POST | `/api/accounts/{number}/withdrawals` | Sacar |
 | GET | `/api/accounts/{number}/history` | Histórico adicional |
 | POST | `/api/transfers` | Transferência local ou remota |
-| GET | `/api/timeline` | Linha do tempo de Lamport |
+| GET | `/api/timeline` | Linha do tempo causal com vetores |
 
-Todas essas rotas, exceto o login, exigem JWT. O console H2 continua público. O endpoint interno de crédito remoto é autenticado por uma chave entre agências e é idempotente pelo identificador da transação. A falha depois do débito e antes da confirmação do destino permanece registrada como inconsistente, propositalmente, para demonstrar a limitação tratada em uma sprint futura com 2PC ou Saga.
+Todas essas rotas, exceto o login, exigem JWT. O console H2 continua público. O endpoint interno antigo retorna 410 depois da validação da chave. Créditos remotos passam pelo RabbitMQ e são idempotentes por UUID. A origem retorna PUBLISHED após confirmação do broker. Falhas de publicação após débito são registradas como INCONSISTENT; não há estorno automático. Veja docs/SPRINT2.md para análise, execução, limites e validação.
 
 ## Executar o projeto completo
 
 Com Java 21, Maven e Node.js 20.19 ou superior instalados, execute no PowerShell:
 
 ```powershell
-.\scripts\start-complete-project.ps1
+.\codigo\scripts\start-complete-project.ps1
 ```
 
 O script gera o backend, abre as três agências e inicia o frontend em `http://localhost:5173`.

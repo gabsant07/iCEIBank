@@ -7,7 +7,7 @@ import aula.iceibank.repository.AccountRepository;
 import aula.iceibank.repository.AgencyRepository;
 import aula.iceibank.repository.AppUserRepository;
 import aula.iceibank.repository.EventLogRepository;
-import aula.iceibank.service.LamportClockService;
+import aula.iceibank.service.VectorClockService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -24,12 +24,12 @@ public class DataInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final BankProperties properties;
     private final EventLogRepository eventLogRepository;
-    private final LamportClockService clock;
+    private final VectorClockService clock;
 
     public DataInitializer(AgencyRepository agencyRepository, AccountRepository accountRepository,
                            AppUserRepository userRepository,
                            PasswordEncoder passwordEncoder, BankProperties properties,
-                           EventLogRepository eventLogRepository, LamportClockService clock) {
+                           EventLogRepository eventLogRepository, VectorClockService clock) {
         this.agencyRepository = agencyRepository;
         this.accountRepository = accountRepository;
         this.userRepository = userRepository;
@@ -51,8 +51,7 @@ public class DataInitializer implements CommandLineRunner {
         }
         seedAccounts();
         seedAgencyUser();
-        eventLogRepository.findTopByAgencyIdOrderByLamportTimestampDesc(properties.getAgencyId())
-                .ifPresent(event -> clock.advanceTo(event.getLamportTimestamp()));
+        eventLogRepository.findAll().stream().filter(event -> event.getTimestampVetorial() != null).forEach(event -> clock.advanceTo(event.getTimestampVetorial()));
     }
 
     private void seedAccounts() {

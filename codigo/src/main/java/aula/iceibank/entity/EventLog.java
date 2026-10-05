@@ -16,6 +16,10 @@ public class EventLog {
     private Integer agencyId;
     private String type;
     private long lamportTimestamp;
+    @jakarta.persistence.Convert(converter = VectorConverter.class)
+    private long[] timestampVetorial;
+
+    public long[] getTimestampVetorial() { return timestampVetorial == null ? null : timestampVetorial.clone(); }
     private Instant wallClock;
     private String details;
 
@@ -29,6 +33,11 @@ public class EventLog {
         this.lamportTimestamp = lamportTimestamp;
         this.wallClock = Instant.now();
         this.details = details;
+    }
+
+    public EventLog(Integer agencyId, String type, long[] vector, String details) {
+        this(agencyId, type, aula.iceibank.service.VectorClockService.rank(vector), details);
+        this.timestampVetorial = vector.clone();
     }
 
     public UUID getId() {

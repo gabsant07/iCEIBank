@@ -1,0 +1,64 @@
+**********************
+PowerShell transcript start
+Start time: 20260929165530
+Username: DESKTOP-V6GGCNP\KABUM
+RunAs User: DESKTOP-V6GGCNP\KABUM
+Configuration Name: 
+Machine: DESKTOP-V6GGCNP (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Users\KABUM\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+$uiPid=[int](Get-Content codigo/target/sprint2-ui.pid); $uiProcess=Get-Process -Id $uiPid -ErrorAction SilentlyContinue; if($uiProcess -and $uiProcess.ProcessName -eq 'java'){Stop-Process -Id $uiPid}; Copy-Item codigo/target/sprint2-ui.log evidencias/sprint2/frontend-regressao.log; .\codigo\mvnw.cmd -f codigo/pom.xml package -q -DskipTests; if($LASTEXITCODE -eq 0){$env:RABBITMQ_URL='amqp://guest:guest@localhost:5673/%2F'; .\codigo\scripts\validar-sprint2.ps1 -ManagementUrl 'http://localhost:15673'}
+Process ID: 33888
+PSVersion: 7.6.5
+PSEdition: Core
+GitCommitId: 7.6.5
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+
+terça-feira, 29 de setembro de 2026 16:55:30
+PS>TerminatingError(Invoke-RestMethod): "
+{
+  "timestamp": "2026-09-29T19:55:41.824761600Z",
+  "status": 401,
+  "error": "Unauthorized",
+  "message": "A valid JWT token is required",
+  "path": "/api/accounts"
+}"
+PASS: JWT obrigatório sem token
+PASS: Transferência assíncrona publicada
+{
+  "id": "55cf1a05-028f-4cbd-8eda-e7e0d7d9add5",
+  "type": "REMOTE_TRANSFER_SENT",
+  "sourceAccount": 3,
+  "destinationAccount": 4,
+  "amount": 25,
+  "status": "PUBLISHED",
+  "agencyId": 0,
+  "lamportTimestamp": 3,
+  "timestampVetorial": [
+    3,
+    0,
+    0
+  ],
+  "createdAt": "2026-09-29T19:55:42.004526200Z",
+  "message": "Published to RabbitMQ; destination credit is asynchronous"
+}
+PASS: Destino desligado: publicação continua aceita
+PASS: Após reinício H2 preservou conta e fila entregou crédito
+PASS: Conta ausente: publicação aceita pelo broker
+PASS: Crédito para conta inexistente preservado na DLQ
+{
+  "name": "fila-agencia-1.dlq",
+  "messages_ready": 2
+}
+PASS: Linha do tempo identifica eventos concorrentes reais
+PASS: Linha do tempo identifica causalidade real
+Logs reais: C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\sprint2-20260929-165530
+**********************
+PowerShell transcript end
+End time: 20260929165548
+**********************

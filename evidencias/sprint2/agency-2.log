@@ -1,0 +1,48 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2026-09-29T16:55:38.531-03:00  INFO 14696 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Starting IceiBankApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 14696 (C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\iceibank-0.0.1-SNAPSHOT.jar started by KABUM in C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo)
+2026-09-29T16:55:38.533-03:00  INFO 14696 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-29T16:55:38.949-03:00  INFO 14696 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-29T16:55:38.984-03:00  INFO 14696 --- [iceibank-agency-0] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 5 JPA repository interfaces.
+2026-09-29T16:55:39.392-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 18082 (http)
+2026-09-29T16:55:39.409-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-29T16:55:39.410-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2026-09-29T16:55:39.439-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-29T16:55:39.440-03:00  INFO 14696 --- [iceibank-agency-0] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 880 ms
+2026-09-29T16:55:39.541-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-29T16:55:39.588-03:00  INFO 14696 --- [iceibank-agency-0] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2026-09-29T16:55:39.610-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-29T16:55:39.812-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-29T16:55:39.832-03:00  INFO 14696 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-29T16:55:39.956-03:00  INFO 14696 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\sprint2-20260929-165530/bank-2 user=SA
+2026-09-29T16:55:39.957-03:00  INFO 14696 --- [iceibank-agency-0] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-29T16:55:39.990-03:00  INFO 14696 --- [iceibank-agency-0] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-29T16:55:40.459-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-29T16:55:40.506-03:00  INFO 14696 --- [iceibank-agency-0] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-29T16:55:40.833-03:00  INFO 14696 --- [iceibank-agency-0] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name databaseUserDetailsService
+2026-09-29T16:55:41.108-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-29T16:55:41.287-03:00  WARN 14696 --- [iceibank-agency-0] [           main] o.s.r.backoff.ExponentialBackOffPolicy   : Multiplier must be > 1.0 for effective exponential backoff, but was 1.0
+2026-09-29T16:55:41.303-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:\trabalho\ICEIBank\ICEIBank-Completo\iceibank-project\codigo\target\sprint2-20260929-165530/bank-2'
+2026-09-29T16:55:41.389-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 18082 (http) with context path '/'
+2026-09-29T16:55:41.393-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5673
+2026-09-29T16:55:41.421-03:00  INFO 14696 --- [iceibank-agency-0] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#57edfa89:0/SimpleConnection@1f40bb80 [delegate=amqp://guest@127.0.0.1:5673/, localPort=50721]
+2026-09-29T16:55:41.502-03:00  INFO 14696 --- [iceibank-agency-0] [           main] aula.iceibank.IceiBankApplication        : Started IceiBankApplication in 3.212 seconds (process running for 3.498)
+2026-09-29T16:55:41.561-03:00  INFO 14696 --- [iceibank-agency-0] [io-18082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-29T16:55:41.562-03:00  INFO 14696 --- [iceibank-agency-0] [io-18082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-29T16:55:41.562-03:00  INFO 14696 --- [iceibank-agency-0] [io-18082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-09-29T16:55:41.958-03:00  INFO 14696 --- [iceibank-agency-0] [io-18082-exec-3] aula.iceibank.service.EventLogService    : [Vetor [0, 0, 1]] DEPOSIT Deposit completed, account=5

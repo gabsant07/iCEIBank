@@ -1,0 +1,96 @@
+E0 | Vetor [1,0,0] | Agência 0 | DEPOSIT | Deposit completed, account=3
+E1 | Vetor [0,1,0] | Agência 1 | BALANCE_CHECKED | Balance checked for account 4
+E2 | Vetor [0,0,1] | Agência 2 | DEPOSIT | Deposit completed, account=5
+E3 | Vetor [2,0,0] | Agência 0 | REMOTE_TRANSFER_DEBIT | Debit account=3, amount=25
+E4 | Vetor [3,0,0] | Agência 0 | REMOTE_TRANSFER_SENT | Published transfer 55cf1a05-028f-4cbd-8eda-e7e0d7d9add5 to agency 1
+E5 | Vetor [4,0,0] | Agência 0 | REMOTE_TRANSFER_DEBIT | Debit account=3, amount=30
+E6 | Vetor [5,0,0] | Agência 0 | REMOTE_TRANSFER_SENT | Published transfer dfc81ba5-7896-4a1f-8ba2-200ad0284197 to agency 1
+E7 | Vetor [3,2,0] | Agência 1 | REMOTE_TRANSFER_RECEIVED | Remote credit from agency 0 for account 4
+E8 | Vetor [6,0,0] | Agência 0 | REMOTE_TRANSFER_DEBIT | Debit account=3, amount=5
+E9 | Vetor [3,3,0] | Agência 1 | BALANCE_CHECKED | Balance checked for account 4
+E10 | Vetor [7,0,0] | Agência 0 | REMOTE_TRANSFER_SENT | Published transfer 0828a5b7-03d1-4f1b-a62d-fc2422d29eb7 to agency 1
+E11 | Vetor [3,4,0] | Agência 1 | ACCOUNT_CREATED | Account created, account=100
+E12 | Vetor [5,5,0] | Agência 1 | REMOTE_TRANSFER_RECEIVED | Remote credit from agency 0 for account 100
+E13 | Vetor [5,6,0] | Agência 1 | BALANCE_CHECKED | Balance checked for account 100
+E14 | Vetor [7,8,0] | Agência 1 | CREDIT_REJECTED | Account not found
+E15 | Vetor [7,10,0] | Agência 1 | CREDIT_REJECTED | Account not found
+E16 | Vetor [7,12,0] | Agência 1 | CREDIT_REJECTED | Account not found
+E0 / E1: CONCORRENTES
+E0 / E2: CONCORRENTES
+E0 / E7: ANTES
+E0 / E9: ANTES
+E0 / E11: ANTES
+E0 / E12: ANTES
+E0 / E13: ANTES
+E0 / E14: ANTES
+E0 / E15: ANTES
+E0 / E16: ANTES
+E1 / E2: CONCORRENTES
+E1 / E3: CONCORRENTES
+E1 / E4: CONCORRENTES
+E1 / E5: CONCORRENTES
+E1 / E6: CONCORRENTES
+E1 / E8: CONCORRENTES
+E1 / E10: CONCORRENTES
+E2 / E3: CONCORRENTES
+E2 / E4: CONCORRENTES
+E2 / E5: CONCORRENTES
+E2 / E6: CONCORRENTES
+E2 / E7: CONCORRENTES
+E2 / E8: CONCORRENTES
+E2 / E9: CONCORRENTES
+E2 / E10: CONCORRENTES
+E2 / E11: CONCORRENTES
+E2 / E12: CONCORRENTES
+E2 / E13: CONCORRENTES
+E2 / E14: CONCORRENTES
+E2 / E15: CONCORRENTES
+E2 / E16: CONCORRENTES
+E3 / E7: ANTES
+E3 / E9: ANTES
+E3 / E11: ANTES
+E3 / E12: ANTES
+E3 / E13: ANTES
+E3 / E14: ANTES
+E3 / E15: ANTES
+E3 / E16: ANTES
+E4 / E7: ANTES
+E4 / E9: ANTES
+E4 / E11: ANTES
+E4 / E12: ANTES
+E4 / E13: ANTES
+E4 / E14: ANTES
+E4 / E15: ANTES
+E4 / E16: ANTES
+E5 / E7: CONCORRENTES
+E5 / E9: CONCORRENTES
+E5 / E11: CONCORRENTES
+E5 / E12: ANTES
+E5 / E13: ANTES
+E5 / E14: ANTES
+E5 / E15: ANTES
+E5 / E16: ANTES
+E6 / E7: CONCORRENTES
+E6 / E9: CONCORRENTES
+E6 / E11: CONCORRENTES
+E6 / E12: ANTES
+E6 / E13: ANTES
+E6 / E14: ANTES
+E6 / E15: ANTES
+E6 / E16: ANTES
+E7 / E8: CONCORRENTES
+E7 / E10: CONCORRENTES
+E8 / E9: CONCORRENTES
+E8 / E11: CONCORRENTES
+E8 / E12: CONCORRENTES
+E8 / E13: CONCORRENTES
+E8 / E14: ANTES
+E8 / E15: ANTES
+E8 / E16: ANTES
+E9 / E10: CONCORRENTES
+E10 / E11: CONCORRENTES
+E10 / E12: CONCORRENTES
+E10 / E13: CONCORRENTES
+E10 / E14: ANTES
+E10 / E15: ANTES
+E10 / E16: ANTES

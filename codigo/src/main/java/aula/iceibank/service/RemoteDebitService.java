@@ -13,10 +13,15 @@ public class RemoteDebitService {
 
     private final AccountRepository accountRepository;
     private final AccountService accountService;
+    private final VectorClockService clock;
+    private final EventLogService logs;
 
-    public RemoteDebitService(AccountRepository accountRepository, AccountService accountService) {
+    public RemoteDebitService(AccountRepository accountRepository, AccountService accountService,
+                              VectorClockService clock, EventLogService logs) {
         this.accountRepository = accountRepository;
         this.accountService = accountService;
+        this.clock = clock;
+        this.logs = logs;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -25,5 +30,6 @@ public class RemoteDebitService {
         accountService.ensureFunds(source, amount);
         source.debit(amount);
         accountRepository.save(source);
+        logs.register("REMOTE_TRANSFER_DEBIT", clock.localEvent(), "Debit account=" + accountNumber + ", amount=" + amount);
     }
 }
